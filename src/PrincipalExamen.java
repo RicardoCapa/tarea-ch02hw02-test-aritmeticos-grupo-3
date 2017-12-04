@@ -1,14 +1,15 @@
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+/**
+ *
+ * @author Grupo3
+ */
 public class PrincipalExamen {
-
-    public int posR = 0;
-
     public static void main(String[] args) {
         ArrayList<PreguntasTerminadas> listaPregunta = new ArrayList<>();
-        while (true) {            
+        PreguntaRespuesta preg_resp = null;
+        while (true) {
             int command = JOptionPane.showOptionDialog(null, "CIS 2017", "UNL", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                     new Object[]{"Rendir Examen",
                         "Administrar Examen",
@@ -26,32 +27,30 @@ public class PrincipalExamen {
                             cerrar = false;
                         }
                     }
-
-                    int limPreguntas = 0;
-                    int respuesta = 0;
-                    String pregunta = "";
-                    int calificacion = 0;
-                    int malas = 0;
-                    boolean contestada = false;
-                    while (limPreguntas < 10) {
-                        int tipo_pregunta = (int) (Math.random() * 4 + 1);
-                        switch (tipo_pregunta) {
-                            case 1://Suma
-                                PreguntaSuma suma = new PreguntaSuma();
-                                respuesta = suma.respuesta();
-                                pregunta = suma.pregunta();
-                                String opcionesArreglo1[] = obtenerOpciones(respuesta);
-                                int pregunS = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + pregunta, "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo1, opcionesArreglo1[0]);
-                                if (opcionesArreglo1[pregunS].equals(String.valueOf(respuesta))) {
-                                    JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    contestada = true;
-                                    calificacion++;
-                                } else {
-                                    contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    malas++;
-                                }
-                                break;
+                    boolean val = PreguntaAlmacenadas.validarUsuario(listaPregunta, cedula);
+                    if (!val) {
+                        int limPreguntas = 0;
+                        int calificacion = 0;
+                        int malas = 0;
+                        boolean contestada = false;
+                        PreguntasTerminadas guardarPregunta;
+                        while (limPreguntas < 10) {
+                            int tipo_pregunta = (int) (Math.random() * 4 + 1);
+                            switch (tipo_pregunta) {
+                                case 1://Suma
+                                    PreguntaSuma suma = new PreguntaSuma();
+                                    String opcionesArreglo1[] = obtenerOpciones(suma.respuesta());
+                                    int pregunS = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + suma.pregunta(), "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo1, opcionesArreglo1[0]);
+                                    if (opcionesArreglo1[pregunS].equals(String.valueOf(suma.respuesta()))) {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        contestada = true;
+                                        calificacion++;
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + suma.pregunta() + " =" + suma.respuesta(), "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        malas++;
+                                    }
+                                    preg_resp = suma;
+                                    break;
                             case 2://RestaPregunta
                                 PreguntaResta resta = new PreguntaResta();
                                 respuesta = resta.respuesta();
