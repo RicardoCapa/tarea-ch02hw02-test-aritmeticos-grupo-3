@@ -66,21 +66,19 @@ public class PrincipalExamen {
                                     preg_resp = resta;
                                     break;
                             case 3://Multiplicacion
-                                PreguntaMultiplicacion multiplicacion = new PreguntaMultiplicacion();
-                                respuesta = multiplicacion.respuesta();
-                                pregunta = multiplicacion.pregunta();
-                                String opcionesArreglo3[] = obtenerOpciones(respuesta);
-                                int pregunM = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + pregunta, "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo3, opcionesArreglo3[0]);
-                                if (opcionesArreglo3[pregunM].equals(String.valueOf(respuesta))) {
-                                    JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    contestada = true;
-                                    calificacion++;
-                                } else {
-                                    contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    malas++;
-                                }
-                                break;
+                                    PreguntaMultiplicacion multiplicacion = new PreguntaMultiplicacion();
+                                    String opcionesArreglo3[] = obtenerOpciones(multiplicacion.respuesta());
+                                    int pregunM = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + multiplicacion.pregunta(), "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo3, opcionesArreglo3[0]);
+                                    if (opcionesArreglo3[pregunM].equals(String.valueOf(multiplicacion.respuesta()))) {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        contestada = true;
+                                        calificacion++;
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Inorrecta\nCorrecion: " + multiplicacion.pregunta() + " =" + multiplicacion.respuesta(), "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        malas++;
+                                    }
+                                    preg_resp = multiplicacion;
+                                    break;
                             case 4://Divicion
                                 PreguntaDivicion divicion = new PreguntaDivicion();
                                 respuesta = divicion.respuesta();
