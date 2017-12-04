@@ -79,29 +79,30 @@ public class PrincipalExamen {
                                     }
                                     preg_resp = multiplicacion;
                                     break;
-                            case 4://Divicion
-                                PreguntaDivicion divicion = new PreguntaDivicion();
-                                respuesta = divicion.respuesta();
-                                pregunta = divicion.pregunta();
-                                String opcionesArreglo4[] = obtenerOpciones(respuesta);
-                                int pregunD = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + pregunta, "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo4, opcionesArreglo4[0]);
-                                if (opcionesArreglo4[pregunD].equals(String.valueOf(respuesta))) {
-                                    JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    contestada = true;
-                                    calificacion++;
-                                } else {
-                                    contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    malas++;
-                                }
-                                break;
+                             case 4://Division
+                                    PreguntaDivicion divicion = new PreguntaDivicion();
+                                    String opcionesArreglo4[] = obtenerOpciones(divicion.respuesta());
+                                    int pregunD = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + divicion.pregunta(), "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo4, opcionesArreglo4[0]);
+                                    if (opcionesArreglo4[pregunD].equals(String.valueOf(divicion.respuesta()))) {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        contestada = true;
+                                        calificacion++;
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Inorrecta\nCorrecion: " + divicion.pregunta() + " =" + divicion.respuesta(), "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        malas++;
+                                    }
+                                    preg_resp = divicion;
+                                    break;
+                            }
+                            guardarPregunta = new PreguntasTerminadas(cedula, preg_resp, contestada);
+                            listaPregunta.add(guardarPregunta);
+                            limPreguntas++;
+                            contestada=false;
                         }
-
-                        PreguntasTerminadas guardarPregunta = new PreguntasTerminadas(cedula, pregunta, respuesta, contestada);
-                        listaPregunta.add(guardarPregunta);
-                        limPreguntas++;
+                        JOptionPane.showMessageDialog(null, "Examen terminado con exito\n Cedula " + cedula + "\nResume:\n Correctas =" + calificacion + "\nIncorrectas " + malas + "\nCalificacion " + calificacion, "UNL", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Usuario ya rindio Examen, un examen por Usuario", "UNL", JOptionPane.ERROR_MESSAGE);
                     }
-                    JOptionPane.showMessageDialog(null, "Examen terminado con exito\n Cedula " + cedula + "\nResume:\n Correctas =" + calificacion + "\nIncorrectas " + malas + "\nCalificacion " + calificacion, "UNL", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 1:
                     PreguntaAlmacenadas.presentarPreguntas(listaPregunta);
@@ -115,7 +116,6 @@ public class PrincipalExamen {
             }
         }
     }
-
     public static String[] obtenerOpciones(int respuesta) {
         String arregloOpciones[] = new String[4];
         int posResp = (int) (Math.random() * 4);
