@@ -48,7 +48,7 @@ public class PrincipalExamen {
                                     calificacion++;
                                 } else {
                                     contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Inorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
                                     malas++;
                                 }
                                 break;
@@ -64,7 +64,7 @@ public class PrincipalExamen {
                                     calificacion++;
                                 } else {
                                     contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Inorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
                                     malas++;
                                 }
                                 break;
@@ -80,7 +80,7 @@ public class PrincipalExamen {
                                     calificacion++;
                                 } else {
                                     contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Inorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
                                     malas++;
                                 }
                                 break;
@@ -96,7 +96,7 @@ public class PrincipalExamen {
                                     calificacion++;
                                 } else {
                                     contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Inorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
                                     malas++;
                                 }
                                 break;
