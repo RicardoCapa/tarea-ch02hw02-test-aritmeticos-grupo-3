@@ -52,21 +52,19 @@ public class PrincipalExamen {
                                     preg_resp = suma;
                                     break;
                             case 2://RestaPregunta
-                                PreguntaResta resta = new PreguntaResta();
-                                respuesta = resta.respuesta();
-                                pregunta = resta.pregunta();
-                                String opcionesArreglo2[] = obtenerOpciones(respuesta);
-                                int pregunR = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + pregunta, "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo2, opcionesArreglo2[0]);
-                                if (opcionesArreglo2[pregunR].equals(String.valueOf(respuesta))) {
-                                    JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    contestada = true;
-                                    calificacion++;
-                                } else {
-                                    contestada = false;
-                                    JOptionPane.showMessageDialog(null, "Respuesta Incorrecta\nCorrecion: " + pregunta + " =" + respuesta, "UNL", JOptionPane.INFORMATION_MESSAGE);
-                                    malas++;
-                                }
-                                break;
+                                    PreguntaResta resta = new PreguntaResta();
+                                    String opcionesArreglo2[] = obtenerOpciones(resta.respuesta());
+                                    int pregunR = JOptionPane.showOptionDialog(null, "Seleccione la respuesta correcta:\n " + resta.pregunta(), "Examen Aritmetico UNL", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesArreglo2, opcionesArreglo2[0]);
+                                    if (opcionesArreglo2[pregunR].equals(String.valueOf(resta.respuesta()))) {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Correcta", "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        contestada = true;
+                                        calificacion++;
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Respuesta Inorrecta\nCorrecion: " + resta.pregunta() + " =" + resta.respuesta(), "UNL", JOptionPane.INFORMATION_MESSAGE);
+                                        malas++;
+                                    }
+                                    preg_resp = resta;
+                                    break;
                             case 3://Multiplicacion
                                 PreguntaMultiplicacion multiplicacion = new PreguntaMultiplicacion();
                                 respuesta = multiplicacion.respuesta();
