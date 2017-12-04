@@ -1,38 +1,26 @@
 
 import java.util.Objects;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author goquezadag
+ * @author JorgePucha
  */
 public class PreguntasTerminadas {
     private String cedula;
-    private String pregunta;
-    private int respuesta;
+    PreguntaRespuesta preg_resp;
     private boolean contestada;
-
     @Override
     public String toString() {
-        return   "Resolucion de la pregunta    " + pregunta + " = " + respuesta + "   Respuesta  " + contestada ;
+        return   "Resolucion de la pregunta    " + preg_resp.pregunta() + " = " + preg_resp.respuesta() + "   Respuesta  " + contestada ;    
     }
-
     public PreguntasTerminadas(String cedula) {
         this.cedula = cedula;
     }
-
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + Objects.hashCode(this.cedula);
         return hash;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -50,17 +38,15 @@ public class PreguntasTerminadas {
         }
         return true;
     }
-    
     public PreguntasTerminadas() {
     }
-
-    public PreguntasTerminadas(String cedula, String pregunta, int respuesta, boolean contestada) {
+    public PreguntasTerminadas(String cedula, PreguntaRespuesta preg_resp, boolean contestada) {
         this.cedula = cedula;
-        this.pregunta = pregunta;
-        this.respuesta = respuesta;
+        setPreg_resp(preg_resp);
+        //pregunta=preg_resp.pregunta();
+        //respuesta=preg_resp.respuesta();
         this.contestada = contestada;
     }
-
     public String getCedula() {
         return cedula;
     }
@@ -68,29 +54,16 @@ public class PreguntasTerminadas {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
-
-    public String getPregunta() {
-        return pregunta;
+    public PreguntaRespuesta getPreg_resp() {
+        return preg_resp;
     }
-
-    public void setPregunta(String pregunta) {
-        this.pregunta = pregunta;
+    public void setPreg_resp(PreguntaRespuesta preg_resp) {
+        this.preg_resp = preg_resp;
     }
-
-    public int getRespuesta() {
-        return respuesta;
-    }
-
-    public void setRespuesta(int respuesta) {
-        this.respuesta = respuesta;
-    }
-
     public boolean isContestada() {
         return contestada;
     }
-
     public void setContestada(boolean contestada) {
         this.contestada = contestada;
-    }
-    
+    } 
 }
