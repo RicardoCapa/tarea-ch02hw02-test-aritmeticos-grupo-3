@@ -10,7 +10,10 @@ public class PreguntasTerminadas {
     private boolean contestada;
     @Override
     public String toString() {
-        return   "Resolucion de la pregunta    " + preg_resp.pregunta() + " = " + preg_resp.respuesta() + "   Respuesta  " + contestada ;    
+      if(contestada)
+        return   "Resolucion de la pregunta    " + preg_resp.pregunta() + " = " + preg_resp.respuesta() + "   Respuesta  " + "Correcta" ;    
+        else 
+         return   "Resolucion de la pregunta    " + preg_resp.pregunta() + " = " + preg_resp.respuesta() + "   Respuesta  " + "Incorrecta" ;    
     }
     public PreguntasTerminadas(String cedula) {
         this.cedula = cedula;
@@ -43,8 +46,6 @@ public class PreguntasTerminadas {
     public PreguntasTerminadas(String cedula, PreguntaRespuesta preg_resp, boolean contestada) {
         this.cedula = cedula;
         setPreg_resp(preg_resp);
-        //pregunta=preg_resp.pregunta();
-        //respuesta=preg_resp.respuesta();
         this.contestada = contestada;
     }
     public String getCedula() {
