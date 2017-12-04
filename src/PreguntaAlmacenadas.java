@@ -56,5 +56,5 @@ public class PreguntaAlmacenadas {
         } else {
             JOptionPane.showMessageDialog(null, "Usuario no existe", "UNL", JOptionPane.ERROR_MESSAGE);
         }
-    }
-}
+    }}
+

@@ -26,4 +26,5 @@ public class PreguntaMultiplicacion implements PreguntaRespuesta{
     public int respuesta() {
         return num1*num2;
     }
+
 }
