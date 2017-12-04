@@ -8,7 +8,7 @@
  *
  * @author goquezadag
  */
-public class PreguntaSuma implements PreguntaRespuesta{
+public class PreguntaSuma extends PreguntaRespuesta{
     private int num1;
     private int num2;
 
