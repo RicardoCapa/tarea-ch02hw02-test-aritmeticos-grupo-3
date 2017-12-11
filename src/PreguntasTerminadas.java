@@ -8,13 +8,11 @@ public class PreguntasTerminadas {
     private String cedula;
     PreguntaRespuesta preg_resp;
     private boolean contestada;
+    private String respuesta;
     @Override
     public String toString() {
-      if(contestada)
-        return   "Resolucion de la pregunta    " + preg_resp.pregunta() + " = " + preg_resp.respuesta() + "   Respuesta  " + "Correcta" ;    
-        else 
-         return   "Resolucion de la pregunta    " + preg_resp.pregunta() + " = " + preg_resp.respuesta() + "   Respuesta  " + "Incorrecta" ;    
-    }
+        return   "cedula:"+cedula +", Pregunta: "+preg_resp.pregunta()+ ", Respuesta: " + preg_resp.respuesta()+", Respuesta correcta: "+  respuesta;
+  }
     public PreguntasTerminadas(String cedula) {
         this.cedula = cedula;
     }
@@ -43,10 +41,11 @@ public class PreguntasTerminadas {
     }
     public PreguntasTerminadas() {
     }
-    public PreguntasTerminadas(String cedula, PreguntaRespuesta preg_resp, boolean contestada) {
+    public PreguntasTerminadas(String cedula, PreguntaRespuesta preg_resp, boolean contestada,String respuesta) {
         this.cedula = cedula;
         setPreg_resp(preg_resp);
         this.contestada = contestada;
+        this.respuesta=respuesta;
     }
     public String getCedula() {
         return cedula;
@@ -67,4 +66,13 @@ public class PreguntasTerminadas {
     public void setContestada(boolean contestada) {
         this.contestada = contestada;
     } 
+
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
+    
 }
